@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Акції</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">BarBaris</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">про ресторан</a>
+                    </li>
+                    <li>
+                        <a href="" class = 'menuButton' onclick="showMenu()">Меню</a>
+                        <ul class = 'dropCatalog' id = 'dropMenu'>
+                            <li>
+                                <a href = "mainmenu.html">Меню ресторану</a>
+                            </li>
+                            <li>
+                                <a href = "deliveryMenu/breakfast.html">Меню доставки</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="promotion.html">Акції</a>
+                    </li>
+                    <li>
+                        <a href="booking.html">Бронь столиків</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Контакти</a>
+                    </li>
+                    <li class = "reg_auth">
+                        <a href="login.html">Реєстрація/Авторизація</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+
+        <div id = "img_basket">
+            <a href = "basket.html"><img src="img/basket.png"></a><span></span>
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/main.jpg')">
+        <div class="container overlay">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Promotions</h1>
+                        <hr class="small">
+                        <span class="subheading">Акції нашого ресторану</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <hr>
+    <!-- Main Content -->
+    <div id = 'proms'>
+
+        <div class="addPromo hide" >
+            <form>          
+                <img src = "img/info.png" title="Заголовок потрібно вказати лише українськими літерами. Також можна використовувати цифри">
+              <label for="promname">Заголовок акції</label>
+              <input type="text" id="promname" name="promname" placeholder="Уведіть заголовок акції">
+              
+              <img src = "img/info.png" title="Вкажіть адресу зображення у наступному форматі: img/promotion/X.jpg, де X - назва зображення. Розмір зображення повинен бути 1920х1080 пікселів/дюйм.">
+              <label for="adrImg">Адреса зображення</label>
+              <input type="text" id="adrImg" name="adrImg" placeholder="img/promotions/X.jpg">
+              
+              <img src = "img/info.png" title="Текст акції потрібно вказати лише українськими літерами. Також можна використовувати цифри.">
+              <label for="promtext">Текст акції</label>
+              <input type="text" id="promtext" name="promtext" placeholder="Уведіть основний текст акції">              
+          
+              <input type="submit" onclick="return addPromo()" value="Додати">
+
+              <script>
+                  function createElement(tag, className) {
+                        const $tag = document.createElement(tag);
+                        if (className) {
+                            $tag.classList.add(className);
+                        }  
+                        return $tag;
+                    }
+
+                    function checkText(text)
+                    {
+                        if (text.match(/^[0-9А-Яа-яёЁЇїІіЄєҐґ\s\%\,\!\?\.\-\'\"\:\=\/\\\(\)]+$/))
+                        {
+                            return true;
+                        }
+                        else 
+                        {
+                            alert("Введено некоректний текст.");
+                            return false;
+                        }
+                    }
+
+                    function checkImg(image) {
+                        if(image.match(/^img\/promotions\/[A-Za-z0-9]+\.jpg$/)) {
+                            return true;
+                        } else {
+                            alert('Введено некоректну адресу зображення.');
+                            return false;
+                        }
+                    }
+                        
+                    function addPromo() {
+                        let $header = document.getElementById('promname').value,
+                        $image = document.getElementById('adrImg').value;
+                        $mainText = document.getElementById('promtext').value;
+                        
+                        if(checkText($header) && checkImg($image) && checkText($mainText)) {
+                            let $proms = document.querySelector('.proms');
+
+                            let $promotion = createElement('div', 'col-md-3');
+                            $promotion.classList.add('promotion');
+
+                            let $post = createElement('div', 'post-review');
+
+                            let $btnDel = createElement('div', 'button_del'); 
+                            let $delButton = createElement('span', 'delete_btn');
+                            $btnDel.appendChild($delButton);
+                            $post.appendChild($btnDel);
+
+                            let $img = createElement('img', 'img-responsive');
+                            $img.setAttribute('src', $image);
+                            $post.appendChild($img);
+
+                            let $head = createElement('h2', 'post-title');
+                            $head.innerHTML = $header;
+                            $post.appendChild($head);
+
+                            let $text = createElement('h3', 'post-subtitle');
+                            $text.innerHTML = $mainText;
+                            $post.appendChild($text);
+
+                            $promotion.appendChild($post);
+                            document.querySelector('#proms').insertBefore($promotion, document.querySelector('.addPromo'));
+
+                            let $promotes = document.querySelectorAll('.promotion');
+                            for(let i = 1; i < $promotes.length; i++) {
+                                $promotes[i].classList.remove('hide');
+                            }
+
+                            document.querySelector('.addPromo').classList.add('hide');               
+                            return false;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+
+              </script>
+            </form>
+        </div> 
+        <button class = 'add_promotion hide'>Додати акцію</button>
+
+        <div class="col-md-3 promotion">
+            <div class="post-preview">
+                <div class="button_del hide">
+                    <span class="delete_btn"></span>
+                </div>
+                    <img class="img-responsive" src="img/promotions/1.jpg">
+                    <h2 class="post-title">
+                        Бадьорий понеділок
+                    </h2>
+                    <h3 class="post-subtitle">
+                        Кожного понеділка при замовленні Французського омлету отримуйте у подарунок бельгійську вафлю з допінгом за вашим смаком!<br><br>Акція діє лише у ресторані.
+                    </h3>
+               
+            </div>
+        </div>
+    
+        <!-- <div class="col-md-3 promotion">
+            <div class="post-preview">
+                <div class="button_del hide">
+                    <span class="delete_btn" data-prom = "1"></span>
+                </div>
+                    <img class="img-responsive" src="img/promotions/1.jpg">
+                    <h2 class="post-title">
+                        Бадьорий понеділок
+                    </h2>
+                    <h3 class="post-subtitle">
+                        Кожного понеділка при замовленні Французського омлету отримуйте у подарунок бельгійську вафлю з допінгом за вашим смаком!<br><br>Акція діє лише у ресторані.
+                    </h3>
+               
+            </div>
+        </div> -->
+    
+        <div class="col-md-3 promotion">
+            <div class="post-preview">
+                <div class="button_del hide">
+                    <span class="delete_btn" data-prom="2"></span>
+                </div>
+                    <img class="img-responsive" src="img/promotions/2.jpg">
+                    <h2 class="post-title">
+                        Затишна неділя
+                    </h2>
+                    <h3 class="post-subtitle">
+                       Кожної п'ятниці отримуйте знижку 15% на усі страви з категорій "Супи" та "Гарячі страви"!<br><br>Акція діє лише у ресторані.
+                    </h3>
+               
+            </div>
+        </div>
+    </div>
+
+    
+
+   
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://github.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://plus.google.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-male fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">&copy; 2021 <a href="#">BarBaris</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+<!--     <script src="js/jquery.js"></script>
+ -->
+    <!-- Bootstrap Core JavaScript -->
+<!--     <script src="js/bootstrap.min.js"></script>
+ -->
+    <!-- Custom Theme JavaScript -->
+<!--     <script src="js/small-business.min.js"></script>
+ -->
+    <!-- Smooth Scroll -->
+    <script src="js/SmoothScroll.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/promotion.js"></script>
+
+</body>
+
+</html>
