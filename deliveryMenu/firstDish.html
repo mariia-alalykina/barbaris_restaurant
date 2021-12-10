@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Первые блюда</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/index.html">BarBaris</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/index.html">Про ресторан</a>
+                    </li>
+                    <li>
+                        <a href="" class = 'menuButton' onclick="showMenu()">Меню</a>
+                        <ul class = 'dropCatalog' id = 'dropMenu'>
+                            <li>
+                                <a href = "/mainmenu.html">Меню ресторану</a>
+                            </li>
+                            <li>
+                                <a href = "breakfast.html">Меню доставки</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/promotion.html">Акції</a>
+                    </li>
+                    <li>
+                        <a href="/booking.html">Бронь столиків</a>
+                    </li>
+                    <li>
+                        <a href="/contact.html">Контакти</a>
+                    </li>
+                    <li class = "reg_auth">
+                        <a href="/login.html">Реєстрація/Авторизація</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+
+        <div id = "img_basket">
+            <a href = "/basket.html"><img src="/img/basket.png"></a><span></span>
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('/img/delMenuBack.jpg')">
+        <div class="container overlay">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1>Delivery Menu</h1>
+                        <hr class="small">
+                        <span class="subheading">Наше меню для доставки</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="sort" style="width:500px;">
+        <label for = "sort">Сортувати </label>
+        <select id = "sort" name = "sort_type">
+          <option value="1" onclick="getSorted(false)">за зростанням ціни</option>
+          <option value="2" onclick="getSorted(true)">за спаданням ціни</option>
+        </select>
+    </div>
+
+    <button class = 'add_dish hide'>Додати страву</button>
+
+    <!-- Main Content -->
+
+    <div id="myModal" class="modal">
+
+        <!-- Модальное содержание -->
+        <div class="modal-content">
+          <span class="close_btn">&times;</span>
+          <div class="addPromo" >
+            <form>          
+                <img src = "/img/info.png" title="Назву страви потрібно вказати лише українськими літерами">
+              <label for="dishname">Назва страви</label>
+              <input type="text" id="dishname" name="dishname" placeholder="Уведіть назву страви">
+              
+              <img src = "/img/info.png" title="Об'єм страви потрібно вказати лише українськими літерами та цифрами. Наприклад: 300 г">
+              <label for="dishvolume">Об'єм страви</label>
+              <input type="text" id="dishvolume" name="dishvolume" placeholder="Уведіть об'єм страви">
+
+              <img src = "/img/info.png" title="Вартість страви введіть у вигляді десяткового дробу через крапку. Наприклад: 98.00">
+              <label for="dishcost">Вартість страви, грн.</label>
+              <input type="text" id="dishcost" name="dishcost" placeholder="Уведіть вартість страви">
+
+              <img src = "/img/info.png" title="ID страви потрібно вказати цифрою">
+              <label for="dishId">ID страви</label>
+              <input type="text" id="dishId" name="dishId" placeholder="Уведіть ID страви">
+
+              <img src = "/img/info.png" title="Вкажіть адресу зображення у наступному форматі: /img/delivmenu/firstDish/X.jpg, де X - назва зображення. Розмір зображення повинен бути 400х400 пікселів/дюйм.">
+              <label for="adrImg">Адреса зображення</label>
+              <input type="text" id="adrImg" name="adrImg" placeholder="/img/delivmenu/firstDish/X.jpg">            
+          
+              <input type="submit" onclick="return addDish()" value="Додати">
+
+              <script>
+                  function createElement(tag, className) {
+                        const $tag = document.createElement(tag);
+                        if (className) {
+                            $tag.classList.add(className);
+                        }  
+                        return $tag;
+                    }
+
+                    function checkName(name)
+                    {
+                        if (name.match(/^[А-Яа-яёЁЇїІіЄєҐґ\s\']+$/))
+                        {
+                            return true;
+                        }
+                        else 
+                        {
+                            alert("Введено некоректну назву страви.");
+                            return false;
+                        }
+                    }
+
+                    function checkVolume(volume)
+                    {
+                        if (volume.match(/^[0-9]+\s{1}[а-я]+$/))
+                        {
+                            return true;
+                        }
+                        else 
+                        {
+                            alert("Введено некоректний об'єм страви.");
+                            return false;
+                        }
+                    }
+
+                    function checkPrice(price)
+                    {
+                        if (price.match(/^([1-9][0-9]*)+\.[0-9]{2}$/))
+                        {
+                            return true;
+                        }
+                        else 
+                        {
+                            alert("Введено некоректну вартість страви.");
+                            return false;
+                        }
+                    }
+
+                    function checkId(id)
+                    {
+                        if (id.match(/^[0-9]+$/))
+                        {
+                            return true;
+                        }
+                        else 
+                        {
+                            alert("Введено некоректний ID страви.");
+                            return false;
+                        }
+                    }
+
+                    function checkImg(image) {
+                        if(image.match(/^\/img\/delivmenu\/firstDish\/[A-Za-z0-9]+\.jpg$/)) {
+                            return true;
+                        } else {
+                            alert('Введено некоректну адресу зображення.');
+                            return false;
+                        }
+                    }
+                        
+                    function addDish() {
+                        let $dishname = document.getElementById('dishname').value,
+                        $dishvolume = document.getElementById('dishvolume').value;
+                        $dishcost = document.getElementById('dishcost').value;
+                        $dishId = document.getElementById('dishId').value;
+                        $adrImg = document.getElementById('adrImg').value;
+                        
+                        if(checkName($dishname) && checkVolume($dishvolume) && checkPrice($dishcost) && checkId($dishId) && checkImg($adrImg)) {
+                            let $row = document.querySelectorAll('.row')[1];
+
+                            let $col = createElement('div', 'col-md-3');
+                            $col.classList.add('col-sm-6');
+
+                            let $product = createElement('div', 'product-grid');
+
+                            let $delButton = createElement('span', 'delete_btn');
+                            $product.appendChild($delButton);
+
+                            let $prodImg = createElement('div', 'product-image');
+                            let $overImg = createElement('span', 'image');
+                            let $img = createElement('img', 'pic-1');
+                            $img.setAttribute('src', $adrImg);
+                            $overImg.appendChild($img);
+                            $prodImg.appendChild($overImg);
+                            $product.appendChild($prodImg);
+
+                            let $prodContent = createElement('div', 'product-content');
+                            
+                            let $title = createElement('h3', 'title');
+                            let $titleIn = createElement('span');
+                            $titleIn.innerText = $dishname;
+                            $title.appendChild($titleIn);
+                            $prodContent.appendChild($title);
+
+                            let $volume = createElement('h4', 'dishVolume');
+                            $volume.innerText = $dishvolume;
+                            $prodContent.appendChild($volume);
+
+                            let $price = createElement('div', 'price');
+                            $price.innerHTML = '<span>' + $dishcost + '</span> грн.';
+                            $prodContent.appendChild($price);
+
+                            let $addBtn = createElement('button', 'add-to-cart');
+                            $addBtn.setAttribute('data-id', $dishId);
+                            $addBtn.innerHTML = '<span>У кошик</span>';
+                            $prodContent.appendChild($addBtn);
+
+                            $product.appendChild($prodContent);
+                            
+                            $col.appendChild($product);
+
+                            $row.insertBefore($col, document.querySelector('.row .col-md-3'));
+
+                            document.getElementById("myModal").style.display = 'none';
+
+                            return false;
+                        }
+                        else {
+                            return false;
+                        }
+                    }
+
+              </script>
+            </form>
+        </div> 
+        <button class = 'add_promotion hide'>Додати акцію</button>
+        </div>
+      
+      </div>
+
+    <!-- Main Content -->
+    <div class="menuSidebar">
+        <a href="breakfast.html">Сніданки</a>
+        <a href="coldDish.html">Холодні страви</a>
+        <a href="salad.html">Салати</a>
+        <a class="activeCategory" href="firstDish.html">Перші страви</a>
+        <a href="meet.html">М'ясо</a>
+        <a href="sideDish.html">Гарніри</a>
+        <a href="dessert.html">Десерти</a>
+        <a href="drinks.html">Напої</a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <span class="delete_btn hide"></span>
+                    <div class="product-image">
+                        <span class="image">
+                            <img class="pic-1" src="/img/delivmenu/firstDish/1.png">
+                        </span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><span href="">Грибний суп</span></h3>
+                        <h4 class = "dishVolume">300 г</h4>
+                        <div class="price"><span>77.00</span> грн.</div>
+                        <button class="add-to-cart" data-id='17'>
+                            <span>У кошик</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <span class="delete_btn hide"></span>
+                    <div class="product-image">
+                        <span class="image">
+                            <img class="pic-1" src="/img/delivmenu/firstDish/2.png">
+                        </span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><span href="">Сирний суп</span></h3>
+                        <h4 class = "dishVolume">250 г</h4>
+                        <div class="price"><span>95.00</span> грн.</div>
+                        <button class="add-to-cart" data-id='18'>
+                            <span>У кошик</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <span class="delete_btn hide"></span>
+                    <div class="product-image">
+                        <span class="image">
+                            <img class="pic-1" src="/img/delivmenu/firstDish/3.png">
+                        </span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><span href="">Солянка м'ясна</span></h3>
+                        <h4 class = "dishVolume">300 г</h4>
+                        <div class="price"><span>93.00</span> грн.</div>
+                        <button class="add-to-cart" data-id='19'>
+                            <span>У кошик</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="product-grid">
+                    <span class="delete_btn hide"></span>
+                    <div class="product-image">
+                        <span class="image">
+                            <img class="pic-1" src="/img/delivmenu/firstDish/4.png">
+                        </span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="title"><span href="">Юшка по-домашньому</span></h3>
+                        <h4 class = "dishVolume">300 г</h4>
+                        <div class="price"><span>185.00</span> грн.</div>
+                        <button class="add-to-cart" data-id='20'>
+                            <span>У кошик</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://github.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://plus.google.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-male fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">&copy; 2021 <a href="#">BarBaris</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+<!--     <script src="js/jquery.js"></script>
+ -->
+    <!-- Bootstrap Core JavaScript -->
+<!--     <script src="js/bootstrap.min.js"></script>
+ -->
+    <!-- Custom Theme JavaScript -->
+<!--     <script src="js/small-business.min.js"></script>
+ -->
+    <!-- Smooth Scroll -->
+    <script src="/js/SmoothScroll.js"></script>
+    <script src="/js/menu.js"></script>
+    <script src="/js/sortMenu.js"></script>
+    <script src="/js/add_to_basket_from_catalog.js"></script>
+
+</body>
+
+</html>
