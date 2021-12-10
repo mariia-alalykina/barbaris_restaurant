@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Особистий кабінет</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>
+
+    <script>
+        if (!sessionStorage.getItem('is_authorit'))
+        {
+            alert('У вас немає доступу до цієї сторінки. Будь ласка, авторизуйтесь.');
+            window.location.href = 'login.html';
+        }
+    </script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">BarBaris</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Про ресторан</a>
+                    </li>
+                    <li>
+                        <a href="" class = 'menuButton' onclick="showMenu()">Меню</a>
+                        <ul class = 'dropCatalog' id = 'dropMenu'>
+                            <li>
+                                <a href = "mainmenu.html">Меню ресторану</a>
+                            </li>
+                            <li>
+                                <a href = "deliveryMenu/breakfast.html">Меню доставки</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="promotion.html">Акції</a>
+                    </li>
+                    <li>
+                        <a href="booking.html">Бронь столиків</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Контакти</a>
+                    </li>
+                    <li class = "reg_auth">
+                        <a href="login.html">Мій кабінет</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+
+        <div id = "img_basket">
+            <a href = "basket.html"><img src="img/basket.png"></a><span></span>
+        </div>
+
+        <div id="log_out" ><a onclick="log_out()">Вийти</a></div>
+
+        <script>
+            function log_out()
+            {
+                sessionStorage.removeItem('is_authorit');
+                sessionStorage.removeItem('u_id');
+                sessionStorage.removeItem('u_name');
+                window.location.href = "login.html";
+            }
+        </script>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/caralog8.jpg')">
+        <div class="container overlay">
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+                    <div class="page-heading">
+                        <h1>My account</h1>
+                        <hr class="small">
+                        <span class="subheading">Вітаємо у особистому кабінеті! Тут ви можете переглянути статус свого останнього замовлення та кількість накопичених бонусів.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <hr>
+
+    
+    <div id = "bonuses"><img src = "img/info.png" title="1 бонус = 1 гривня">Кількість бонусів: <span>12</span></div>
+
+    <table id="orderStatus">
+        <thead>
+            <tr>
+                <th>Страви</th>
+                <th>Адреса</th>
+                <th>Час</th>
+                <th>Сума замовлення</th>
+                <th>Статус замовлення</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Солянка м'ясна, Салат Цезарь</td>
+                <td>м. Дніпро, вул. Терещенківська 28, кв. 9, п. 1</td>
+                <td>14:30</td>
+                <td>238.00</td>
+                <td>Передано кур'єру</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="https://github.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://plus.google.com">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-google-plus fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-male fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">&copy; 2021 <a href="#">BarBaris</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+<!--     <script src="js/jquery.js"></script>
+ -->
+    <!-- Bootstrap Core JavaScript -->
+<!--     <script src="js/bootstrap.min.js"></script>
+ -->
+    <!-- Custom Theme JavaScript -->
+<!--     <script src="js/small-business.min.js"></script>
+ -->
+    <!-- Smooth Scroll -->
+    <script src="js/SmoothScroll.js"></script>
+    <script src="/js/menu.js"></script>
+    <script src="js/account.js"></script>
+
+
+</body>
+
+</html>
