@@ -1,0 +1,1433 @@
+body {
+  font-family: Roboto, sans-serif;
+  font-size: 20px;
+  color: #404040;
+}
+p {
+  line-height: 1.5;
+  margin: 30px 0;
+}
+p a {
+  text-decoration: underline;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+}
+a {
+  color: #404040;
+}
+a:hover,
+a:focus {
+  color: #0085a1;
+}
+a img:hover,
+a img:focus {
+  cursor: zoom-in;
+}
+blockquote {
+  color: #808080;
+  font-style: italic;
+}
+hr.small {
+  max-width: 100px;
+  margin: 15px auto;
+  border-width: 4px;
+  border-color: white;
+}
+.navbar-custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  font-family: Roboto, sans-serif;
+}
+.navbar-custom .navbar-brand {
+  font-weight: 800;
+}
+.navbar-custom .nav li a {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+@media only screen and (min-width: 768px) {
+  .navbar-custom {
+    background: transparent;
+    border-bottom: 1px solid transparent;
+  }
+  .navbar-custom .navbar-brand {
+    color: white;
+    padding: 20px;
+  }
+  .navbar-custom .navbar-brand:hover,
+  .navbar-custom .navbar-brand:focus {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .navbar-custom .nav li a {
+    color: white;
+    padding: 20px;
+  }
+  .navbar-custom .nav li a:hover,
+  .navbar-custom .nav li a:focus {
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+@media only screen and (min-width: 1170px) {
+  .navbar-custom {
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .navbar-custom.is-fixed {
+    /* when the user scrolls down, we hide the header right above the viewport */
+    position: fixed;
+    top: -61px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid #f2f2f2;
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+  }
+  .navbar-custom.is-fixed .navbar-brand {
+    color: #404040;
+  }
+  .navbar-custom.is-fixed .navbar-brand:hover,
+  .navbar-custom.is-fixed .navbar-brand:focus {
+    color: #0085a1;
+  }
+  .navbar-custom.is-fixed .nav li a {
+    color: #404040;
+  }
+  .navbar-custom.is-fixed .nav li a:hover,
+  .navbar-custom.is-fixed .nav li a:focus {
+    color: #0085a1;
+  }
+  .navbar-custom.is-visible {
+    /* if the user changes the scrolling direction, we show the header */
+    -webkit-transform: translate3d(0, 100%, 0);
+    -moz-transform: translate3d(0, 100%, 0);
+    -ms-transform: translate3d(0, 100%, 0);
+    -o-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+}
+
+.intro-header {
+  background-color: #808080;
+  background: no-repeat center center;
+  background-attachment: scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  margin-bottom: 50px;
+}
+.intro-header .site-heading,
+.intro-header .post-heading,
+.intro-header .page-heading {
+  padding: 100px 0 50px;
+  color: white;
+}
+@media only screen and (min-width: 768px) {
+  .intro-header .site-heading,
+  .intro-header .post-heading,
+  .intro-header .page-heading {
+    padding: 150px 0;
+  }
+}
+.intro-header .site-heading,
+.intro-header .page-heading {
+  text-align: center;
+}
+.intro-header .site-heading h1,
+.intro-header .page-heading h1 {
+  margin-top: 0;
+  font-size: 80px;
+  font-family: 'Great Vibes', serif;
+}
+.intro-header .site-heading .subheading,
+.intro-header .page-heading .subheading {
+  font-size: 24px;
+  line-height: 1.5;
+  display: block;
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+  margin: 10px 0 0;
+}
+.intro-header a {
+color: #fff;
+border-bottom:1px solid #ccc;
+}
+.intro-header a:hover {
+text-decoration: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .intro-header .site-heading h1,
+  .intro-header .page-heading h1 {
+    font-size: 100px;
+  }
+}
+.intro-header .post-heading h1 {
+  font-size: 35px;
+}
+.intro-header .post-heading .subheading,
+.intro-header .post-heading .meta {
+  line-height: 1.1;
+  display: block;
+}
+.intro-header .post-heading .subheading {
+  font-family: Roboto, sans-serif;
+  font-size: 24px;
+  margin: 10px 0 30px;
+  font-weight: 600;
+}
+.intro-header .post-heading .meta {
+  font-family: Roboto, sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 20px;
+}
+.intro-header .post-heading .meta a {
+  color: white;
+}
+@media only screen and (min-width: 768px) {
+  .intro-header .post-heading h1 {
+    font-size: 55px;
+  }
+  .intro-header .post-heading .subheading {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .container-90 {
+    width:90%;
+  }
+}
+
+.post-preview {
+  padding-bottom:20px;
+}
+.post-preview > a {
+  color: #333;
+}
+.post-preview h2 {
+  font-size: 26px;
+}
+.post-preview > a:hover,
+.post-preview > a:focus {
+  text-decoration: none;
+  color: #666;
+}
+.post-preview > a > .post-title {
+  margin: 20px 0;
+}
+.post-preview > a > .post-subtitle {
+  margin: 0;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 26px;
+}
+p.post-meta {
+  color: #808080;
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+p.post-meta > a {
+  text-decoration: none;
+  color: #404040;
+}
+.post-meta > a:hover,
+.post-meta > a:focus {
+  color: #0085a1;
+  text-decoration: underline;
+}
+
+.section-heading {
+  font-size: 36px;
+  margin-top: 60px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+.caption {
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  font-style: italic;
+  margin: 0;
+  display: block;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+footer {
+  padding: 50px 0 65px;
+}
+footer .list-inline {
+  margin: 0;
+  padding: 0;
+}
+footer .copyright {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 0;
+}
+.floating-label-form-group {
+  font-size: 14px;
+  position: relative;
+  margin-bottom: 0;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #ccc;
+}
+.floating-label-form-group input,
+.floating-label-form-group textarea {
+  z-index: 1;
+  position: relative;
+  padding-right: 0;
+  padding-left: 0;
+  border: none;
+  border-radius: 0;
+  font-size: 1.5em;
+  background: none;
+  box-shadow: none !important;
+  resize: none;
+}
+.floating-label-form-group label {
+  display: block;
+  z-index: 0;
+  position: relative;
+  top: 2em;
+  margin: 0;
+  font-size: 0.85em;
+  line-height: 1.764705882em;
+  vertical-align: middle;
+  vertical-align: baseline;
+  opacity: 0;
+  -webkit-transition: top 0.3s ease,opacity 0.3s ease;
+  -moz-transition: top 0.3s ease,opacity 0.3s ease;
+  -ms-transition: top 0.3s ease,opacity 0.3s ease;
+  transition: top 0.3s ease,opacity 0.3s ease;
+}
+.floating-label-form-group::not(:first-child) {
+  padding-left: 14px;
+  border-left: 1px solid #eeeeee;
+}
+.floating-label-form-group-with-value label {
+  top: 0;
+  opacity: 1;
+}
+.floating-label-form-group-with-focus label {
+  color: #0085a1;
+}
+form .row:first-child .floating-label-form-group {
+  border-top: 1px solid #ccc;
+}
+.btn {
+  font-family: Roboto, sans-serif;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  border-radius: 0;
+  padding: 15px 25px;
+}
+.btn-lg {
+  font-size: 16px;
+  padding: 25px 35px;
+}
+.btn-default:hover,
+.btn-default:focus {
+  background-color: #0085a1;
+  border: 1px solid #0085a1;
+  color: white;
+}
+.pager {
+  margin: 20px 0 0;
+  float:left;
+}
+.pager li > a,
+.pager li > span {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  display: table;
+}
+
+.pager li > a {
+  width: 6em;
+  height: 6em;
+  line-height: 5em;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.pager li > a:hover,
+.pager li > a:focus {
+  color: white;
+  background-color: #0085a1;
+  border: 1px solid #0085a1;
+}
+.pager .disabled > a,
+.pager .disabled > a:hover,
+.pager .disabled > a:focus,
+.pager .disabled > span {
+  color: #808080;
+  background-color: #404040;
+  cursor: not-allowed;
+}
+::-moz-selection {
+  color: white;
+  text-shadow: none;
+  background: #0085a1;
+}
+::selection {
+  color: white;
+  text-shadow: none;
+  background: #0085a1;
+}
+img::selection {
+  color: white;
+  background: transparent;
+}
+img::-moz-selection {
+  color: white;
+  background: transparent;
+}
+body {
+  webkit-tap-highlight-color: #0085a1;
+}
+
+/* ----------------------------------------------------MINE-------------------------------------------------- */
+
+.menuButton:after {
+  font-family: "Roboto, sans-serif";
+  color: inherit;
+  margin-left: 10px;
+}
+.dropCatalog {
+  background: #273037;
+  position: absolute;
+  top: 100%;
+  z-index: 5;
+  width: 150px;
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin :0 0;
+  transition: .5s ease-in-out;
+  right: -34px;
+  padding-left: 35px;
+}
+.dropCatalog li {
+  list-style: none;
+}
+.dropCatalog a {
+  color: white;
+  text-align: center;
+  padding: 0;
+  font-size: 13px;
+}
+.dropCatalog li:last-child a {border-bottom: none;}
+.navbar-nav > li:hover .dropCatalog {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+#img_basket
+{
+    width: 10%;
+    max-width: 960px;
+    display: inline-block;
+    position: relative;
+    left: 5%;
+}
+
+#img_basket img
+{
+    position: relative;
+    display: inline-block;
+    width: 30%;
+    height: auto;
+    cursor: pointer;
+    left: 830%;
+    top: 50%;
+}
+
+#img_basket img:hover
+{
+    opacity: 0.6;
+}
+
+.aboutBlock {
+  left: 15%;
+}
+
+h3 {
+  font-weight: 300;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.mainMenu * {
+  box-sizing: border-box;
+}
+/* Расположите контейнер с изображением (необходимо расположить стрелки влево и вправо) */
+.mainMenu {
+  width: 50%;
+  position: relative;
+  left: 25%;
+}
+
+/* Скрыть изображения по умолчанию */
+.mySlides {
+  display: none;
+}
+
+/* Вперед и назад кнопки */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Расположите кнопку "вперед" справа */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* При наведении курсора мыши добавьте черный цвет фона с небольшим прозрачным слоем */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+}
+
+/* Номер текста (1/3 и т.д.) */
+.numbertext {
+  color: #000000;
+  font-size: 16px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* -----------------------------------Меню доставки----------------------------------------------------- */
+.menuSidebar + .container {
+  position: relative;
+  margin-right: 0;
+  display: inline-block;
+  margin-left: 20%;
+}
+
+.menuSidebar + .container .col-md-3 {
+  width: 25%;
+}
+
+@media (min-width:1200px) {
+  .menuSidebar + .container {
+   width:945px
+  }
+ }
+ 
+.product-grid{
+  margin-top: 45px;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  
+}
+.product-grid .product-image{
+  position: relative;
+  overflow: hidden;
+}
+.product-grid .product-image span.image{ display: block; }
+.product-grid .product-image img{
+  width: 100%;
+  height: auto;
+  transition: all 0.3s;
+  cursor: default;
+}
+.product-grid .product-image:hover img{ transform: scale(1.05); }
+
+.product-grid .product-content{
+  width: 100%;
+  padding: 12px 0;
+  display: inline-block;
+}
+.product-grid .title{
+  margin: 0 0 7px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: text;
+}
+.product-grid .title span{
+  color: rgb(59, 0, 0);
+  transition: all 0.4s ease-out;
+}
+
+.product-grid .price{
+  color: rgb(10, 119, 28);
+  font-size: 16px;
+  font-weight: 600;
+  width: calc(100% - 100px);
+  margin: 0 0 10px;
+  display: inline-block;
+}
+
+.product-grid .add-to-cart{
+  color: #000;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  width: 75%;
+  margin: 0 auto;
+  border: 1px solid #033772;
+  display: block;
+  transition: all .3s ease;
+}
+.product-grid .add-to-cart:hover{
+  color: #fff;
+  background: #ee7f17;
+}
+
+.product-grid .add-to-cart span{
+  text-align: center;
+  line-height: 35px;
+  height: 35px;
+  width: calc(100% - 40px);
+  padding: 0 0 0 40px;
+  vertical-align: top;
+  display: inline-block;
+}
+@media only screen and (max-width:990px){
+  .product-grid{ margin: 0 0 30px; }
+}
+
+.dishVolume {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+/* ------------------------------------------Боковое меню категорий блюд------------------------------------ */
+.menuSidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: absolute;
+  height: 85%;
+  overflow: auto;
+  left: 50px;
+  display: inline-block;
+}
+
+.activeCategory {
+  background-color: #e67533;
+  color: white;
+}
+
+/* Боковой панели ссылок */
+.menuSidebar a {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+/* Ссылки на мышь-над */
+.menuSidebar a:hover {
+  background-color: #e67533;
+  color: white;
+}
+
+/* Содержимое страницы. Значение свойства margin-left должно совпадать со значением свойства width боковой панели */
+/* div.container {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+} */
+
+/* На экранах, которые меньше 700px в ширину, сделать боковую панель в верхней панели */
+@media screen and (max-width: 700px) {
+  .menuSidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .menuSidebar a {float: left;}
+}
+
+/* На экранах размером менее 400 пикселей панель отображается вертикально, а не горизонтально */
+@media screen and (max-width: 400px) {
+  .menuSidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+/* -----------------------------------Сортировка по цене ------------------------------------------------ */
+/* Контейнер должен быть расположен относительно: */
+.sort {
+  position: relative;
+  left: 21%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.sort label
+{
+    color: #000000; 
+    font-family: 'Roboto', sans-serif;
+    font-weight: 450;
+    font-size: 1em;
+    width: 100%;
+    position: relative;
+    vertical-align: bottom;
+}
+
+.sort select
+{
+    border-radius: 7px;
+    padding: 1%;
+    width: 45%;
+    border: 1px solid #999999;
+    color: #000000; 
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 0.9em;
+    margin-top: 1%;
+    overflow: hidden;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url(/img/arrow_down.png) 96% / 10% no-repeat #ffffff;
+}
+
+.sort input[type=submit]
+{
+    border: 1px solid #999999;
+    background-color: white;
+    border-radius: 10px;
+    color: #000000; 
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 0.9em;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0.5%;
+    margin-top: 1%;
+}
+
+.add_dish {
+  position: relative;
+  left: 80%;
+  top: 163%;
+}
+
+/* Модальный (фон) */
+.modal {
+  display: none; /* Скрыто по умолчанию */
+  position: fixed; /* Оставаться на месте */
+  z-index: 1; /* Сидеть на вершине */
+  left: 0;
+  top: 0;
+  width: 100%; /* Полная ширина */
+  height: 100%; /* Полная высота */
+  overflow: auto; /* Включите прокрутку, если это необходимо */
+  background-color: rgb(0,0,0); /* Цвет запасной вариант */
+  background-color: rgba(0,0,0,0.4); /* Черный с непрозрачностью */
+}
+
+/* Модальное содержание/коробка */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% сверху и по центру */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Может быть больше или меньше, в зависимости от размера экрана */
+}
+
+/* Кнопка закрытия */
+.close_btn {
+  color: #aaa;
+  float: right;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.close_btn:hover,
+.close_btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+} 
+/* ----------------------------------------------LOGIN.HTML--------------------------------------------- */
+.authorization
+{
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 1280px;
+}
+
+.authorization img {
+  display: inline-block;
+  position: relative;
+  width: 7%;
+  cursor: help;
+}
+
+.log_in
+{
+    display: inline-block;
+    position: relative;
+    width: 40%;
+}
+
+.registr
+{
+  display: inline-block;
+  position: relative;
+  width: 40%;
+  margin-bottom: 5%;
+  left: 5%;
+}
+
+#log
+{
+  display: inline-block;
+  position: relative;
+  border: 2px solid #336633;
+  border-radius: 7px;
+  width: 70%;
+  left: 40%;
+  height: auto;
+  margin-bottom: 35%;
+  vertical-align:text-bottom;
+  background-color: white;
+}
+  
+#reg
+{
+  display: inline-block;
+  position: relative;
+  border: 2px solid #336633;
+  border-radius: 7px;
+  width: 80%;
+  left: 30%;
+  height: auto;
+  margin-top: 10%;
+  background-color: white;
+}
+
+input[type=email], input[type=password], input[type=text]
+{
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid rgb(153, 149, 149);
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+input::-moz-placeholder
+{
+    color: #999999; 
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1.2em;
+    width: 100%;
+    position: relative;
+}
+
+input::-webkit-input-placeholder 
+{
+    color: #999999; 
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1.2em;
+    width: 100%;
+    position: relative;
+}
+
+input::-ms-input-placeholder
+{
+    color: #999999; 
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1.2em;
+    width: 100%;
+    position: relative;
+}
+  
+.authorization label,
+.registr label
+{
+    color: #336633; 
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#reg button,
+#log button 
+{
+  background-color: #e6723d;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.2em;
+  position: relative;
+  overflow: hidden;
+}
+  
+#reg button:hover,
+#log button:hover 
+{
+  opacity: 0.85;
+}
+
+.container_login
+{
+  padding: 16px;
+}
+
+/* --------------------------------------------ACCOUNT.HTML----------------------------------------------- */
+
+#log_out {
+  width: 5%;
+  max-width: 960px;
+  display: inline-block;
+  position: relative;
+  left: 83.5%;
+}
+
+#log_out a {
+  color: #ee7f17;
+}
+
+#log_out a:hover {
+  text-decoration: none;
+  cursor: pointer;
+  color: #ac4907;
+}
+
+#orderStatus {
+	width: 80%;
+  margin-left: 10%;
+	border: none;
+	margin-bottom: 20px;
+	border-collapse: separate;
+}
+#orderStatus thead th {
+	font-weight: bold;
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	background: #EDEDED;
+	font-size: 14px;
+	border-top: 1px solid #ddd;
+}
+#orderStatus tr th:first-child, #orderStatus tr td:first-child {
+	border-left: 1px solid #ddd;
+}
+#orderStatus tr th:last-child, #orderStatus tr td:last-child {
+	border-right: 1px solid #ddd;
+}
+#orderStatus thead tr th:first-child {
+	border-radius: 20px 0 0 0;
+}
+#orderStatus thead tr th:last-child {
+	border-radius: 0 20px 0 0;
+}
+#orderStatus tbody td {
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	font-size: 14px;
+	vertical-align: top;
+}
+#orderStatus tbody tr:nth-child(even) {
+	background: #F8F8F8;
+}
+#orderStatus tbody tr:last-child td{
+	border-bottom: 1px solid #ddd;
+}
+#orderStatus tbody tr:last-child td:first-child {
+	border-radius: 0 0 0 20px;
+}
+#orderStatus tbody tr:last-child td:last-child {
+	border-radius: 0 0 20px 0;
+}
+
+#bonuses {
+  position: relative;
+  margin-bottom: 20px;
+  left: 10%;
+  color: #000000;
+}
+
+#bonuses span {
+  color: #ac4907;
+}
+
+#bonuses img {
+  width: 2%;
+  cursor: help;
+}
+
+/* ----------------------------------BOOKING.HTML---------------------------- */
+
+/* Входные данные стиля с type="text", выберите элементы и области текста */
+.booking input[type=text], .booking select, .booking input[type=phone] {
+  width: 100%; /* Полная ширина */
+  padding: 12px; /* Немного отступов */ 
+  border: 1px solid #ccc; /* Серая граница */
+  border-radius: 4px; /* Округленные границы */
+  box-sizing: border-box; /* Убедитесь, что прокладка и ширина остаются на месте */
+  margin-top: 6px; /* Добавить верхнее поле */
+  margin-bottom: 16px; /* Нижнее поле */
+  resize: vertical /* Разрешить пользователю изменять размер текстовой области по вертикали (не по горизонтали) */
+}
+
+/* Стиль кнопки Отправить с определенным цветом фона и т. д */
+input[type=submit] {
+  background-color: #e98323;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* При наведении курсора мыши на кнопку Отправить добавьте более темный зеленый цвет */
+input[type=submit]:hover {
+  background-color: #c47215;
+}
+
+/* Добавить цвет фона и некоторые отступы вокруг формы */
+.booking {
+  width: 100%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+} 
+
+.booking img {
+  width: 2%;
+  cursor: help;
+}
+
+/* -----------------------------------------BASKET.HTML-------------------------------------------------- */
+
+body #basket
+{
+    width: 750px;
+    height: auto;
+    margin: 60px auto;
+    background: rgba(255, 255, 255, 0.4);
+    background-blend-mode: unset;
+    box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+    border-radius: 6px;
+    border: 1px solid #999999;
+    display: flex;
+    flex-direction: column;
+}
+
+.basket_head 
+{
+    border-bottom: 1px solid #999999;
+    padding: 20px 30px;
+    color: #003300;
+    font-size: 1.3em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+   
+.item 
+{
+    padding: 20px 30px;
+    display: flex;
+}
+   
+.button_del
+{
+    position: relative;
+    padding-top: 30px;
+    margin-right: 25px;
+}
+
+.delete_btn
+{
+    display: inline-block;
+    cursor: pointer; 
+    width: 20px;
+    height: 19px;
+    background: url("/img/cross.png") no-repeat center;
+}
+
+.basket_image
+{
+    width: 15%;
+    margin-right: 4%;
+}
+
+.basket_image img
+{
+    width: 100%;
+    border-radius: 15px;
+}
+   
+.description 
+{
+    padding-top: 0;
+    margin-right: 30px;
+    width: 270px;
+}
+   
+.description span 
+{
+    display: block;
+    font-size: 1em;
+    font-family: 'Montserrat', sans-serif;
+    color: #003300;
+    font-weight: 300;
+}
+   
+.description span:first-child 
+{
+    margin-bottom: 5px;
+}
+
+.description span:last-child 
+{
+    margin-top: 8px;
+    font-weight: 400;
+    color: #fcad59;
+}
+
+.quantity 
+{
+    padding-top: 20px;
+    margin-right: 50px;
+}
+
+.quantity p
+{
+    display: inline-block;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    color: #f47427;
+    font-weight: 300;
+    margin: 15% 0 0 0;
+}
+
+#img_basket span
+{
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7em;
+  color: #fff;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+  left: 830%;
+  top: 25%;
+}
+
+.total_price 
+{
+    width: 83px;
+    padding-top: 27px;
+    margin-left: 0px;
+    text-align: center;
+    font-size: 1.1em;
+    font-family: 'Montserrat', sans-serif;
+    color: #003300;
+    font-weight: 300;
+}
+
+@media (max-width: 800px) 
+{
+    #basket
+    {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+    }
+    
+    .item 
+    {
+      height: auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .basket_image img 
+    {
+      width: 50%;
+    }
+    
+    .image,
+    .quantity,
+    .description 
+    {
+      width: 100%;
+      text-align: center;
+      margin: 6px 0;
+    }
+    
+    .buttons 
+    {
+      margin-right: 20px;
+    }
+}
+
+#total_cost
+{
+    display: inline-block; 
+    position: relative; 
+    width: 100%; 
+    font-family: Montserrat, sans-serif; 
+    color: #1b4c00; 
+    font-weight: 600; 
+    font-size: 1.2em; 
+    left: 0%; 
+    padding: 2%; 
+    border-top: 1px solid #999999;
+}
+
+#total_cost p:first-child
+{
+    display: inline-block; 
+    font-family: Montserrat, sans-serif; 
+    color: #330066; 
+    font-weight: 300; 
+    font-size: 0.8em; 
+    left: 5%; 
+    margin: 0;
+}
+
+#total_cost p:last-child
+{
+    margin: 0; 
+    display: inline-block; 
+    text-align: right; 
+    width: 71%;
+}
+
+#total_cost p:first-child:hover
+{
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#make_order
+{
+    position: relative;
+    width: 100%;
+    background-color: #cc6600da;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 1.1em;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    padding: 1% 3%;
+    box-shadow: 0 4px 5px 0px rgba(0, 0, 0, 0.582) ;
+    overflow:hidden;
+}
+
+/* --------------------------------ORDER_FORM------------------------------- */
+
+.order input[type=text], .order select, .order input[type=phone], .order input[type=textarea] {
+  width: 100%; /* Полная ширина */
+  padding: 12px; /* Немного отступов */ 
+  border: 1px solid #ccc; /* Серая граница */
+  border-radius: 4px; /* Округленные границы */
+  box-sizing: border-box; /* Убедитесь, что прокладка и ширина остаются на месте */
+  margin-top: 6px; /* Добавить верхнее поле */
+  margin-bottom: 16px; /* Нижнее поле */
+  resize: vertical /* Разрешить пользователю изменять размер текстовой области по вертикали (не по горизонтали) */
+}
+
+/* Стиль кнопки Отправить с определенным цветом фона и т. д */
+input[type=submit] {
+  background-color: #e98323;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* При наведении курсора мыши на кнопку Отправить добавьте более темный зеленый цвет */
+input[type=submit]:hover {
+  background-color: #c47215;
+}
+
+/* Добавить цвет фона и некоторые отступы вокруг формы */
+.order {
+  width: 100%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+} 
+
+.order img {
+  width: 3%;
+  cursor: help;
+}
+
+/* -------------------------------------ADMIN.HTML------------------------- */
+
+#adminBooking {
+	width: 80%;
+  margin-left: 10%;
+	border: none;
+	margin-bottom: 20px;
+	border-collapse: separate;
+}
+#adminBooking thead th {
+	font-weight: bold;
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	background: #EDEDED;
+	font-size: 14px;
+	border-top: 1px solid #ddd;
+}
+#adminBooking tr th:first-child, #adminBookig tr td:first-child {
+	border-left: 1px solid #ddd;
+}
+#adminBooking tr th:last-child, #adminBookig tr td:last-child {
+	border-right: 1px solid #ddd;
+}
+#adminBooking thead tr th:first-child {
+	border-radius: 20px 0 0 0;
+}
+#adminBooking thead tr th:last-child {
+	border-radius: 0 20px 0 0;
+}
+#adminBooking tbody td {
+	text-align: left;
+	border: none;
+	padding: 10px 15px;
+	font-size: 14px;
+	vertical-align: top;
+}
+#adminBooking tbody tr:nth-child(even) {
+	background: #F8F8F8;
+}
+#adminBooking tbody tr:last-child td{
+	border-bottom: 1px solid #ddd;
+}
+#adminBooking tbody tr:last-child td:first-child {
+	border-radius: 0 0 0 20px;
+}
+#adminBooking tbody tr:last-child td:last-child {
+	border-radius: 0 0 20px 0;
+}
+
+#adminBooking .delete_btn {
+display: inline-block;
+cursor: pointer;
+width: 20px;
+height: 19px;
+background: url("/img/cross.png") no-repeat center;
+margin-left: 30%;
+}
+
+/* -------------------------------------------PROMOTION.HTML-----------------------*/
+.promotion {
+  left: 15%;
+  margin-top: 20px;
+  border-bottom: 2px solid #bc5000;
+}
+
+/* Входные данные стиля с type="text", выберите элементы и области текста */
+.addPromo input[type=text] {
+  width: 100%; /* Полная ширина */
+  padding: 12px; /* Немного отступов */ 
+  border: 1px solid #ccc; /* Серая граница */
+  border-radius: 4px; /* Округленные границы */
+  box-sizing: border-box; /* Убедитесь, что прокладка и ширина остаются на месте */
+  margin-top: 6px; /* Добавить верхн ее поле */
+  margin-bottom: 16px; /* Нижнее поле */
+  resize: vertical /* Разрешить пользователю изменять размер текстовой области по вертикали (не по горизонтали) */
+}
+
+/* Стиль кнопки Отправить с определенным цветом фона и т. д */
+.addPromo input[type=submit] {
+  background-color: #e98323;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* При наведении курсора мыши на кнопку Отправить добавьте более темный зеленый цвет */
+.addPromo input[type=submit]:hover {
+  background-color: #c47215;
+}
+
+/* Добавить цвет фона и некоторые отступы вокруг формы */
+.addPromo {
+  width: 100%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+} 
+
+.addPromo img {
+  width: 2%;
+  cursor: help;
+}
+
