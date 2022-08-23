@@ -1,7 +1,7 @@
 let $delets = document.querySelectorAll('.post-preview .delete_btn');
 
 function removePromotion(e) {
-    if (confirm('Ви дійсно хочете видалити цю новину?')) {
+    if (confirm('Ви дійсно хочете видалити цю акцію?')) {
     let $mainParent = this.parentNode.parentNode.parentNode;
      $mainParent.remove();
     }

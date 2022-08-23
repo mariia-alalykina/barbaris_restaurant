@@ -12,6 +12,17 @@ function removeDish(e) {
     
 }
 
+(function() {
+    let options = document.querySelectorAll("#sort option");
+for (let item of options) {
+    if (item.value == 1) {
+        item.addEventListener("click", () => { getSorted(false) });
+    } else {
+        item.addEventListener("click", () => { getSorted(true) });
+    }
+}
+})();
+
     function getSorted(isReverse) {
         let section = document.querySelector('body > .container .row');
         let products = document.querySelector('.product-content .price span').parentNode.parentNode.parentNode.parentNode;
